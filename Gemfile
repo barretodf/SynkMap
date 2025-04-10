@@ -13,7 +13,7 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", ">= 5.0"
 
 # Use Tailwind CSS for styling
-gem "tailwindcss-rails", "~> 2.0"
+gem "tailwindcss-rails", "~> 4.2"
 
 # Use Devise for authentication
 gem "devise", "~> 4.9"
