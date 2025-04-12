@@ -15,3 +15,5 @@ resources :music_genres, only: [:index] do
   
   resources :availabilities, only: [:index, :update]
 
+  resource :contact, only: [:new, :create]
+

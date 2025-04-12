@@ -1,0 +1,8 @@
+<h2>Entre em contato com o músico</h2>
+
+<%= form_with url: contact_path, local: true do |f| %>
+  <p><%= f.label :nome %><br><%= f.text_field :nome %></p>
+  <p><%= f.label :email %><br><%= f.email_field :email %></p>
+  <p><%= f.label :mensagem %><br><%= f.text_area :mensagem %></p>
+  <%= f.submit "Enviar" %>
+<% end %>
