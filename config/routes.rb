@@ -1,21 +1,24 @@
-patch 'users/:id/bio', to: 'users#update_bio', as: 'update_user_bio'
-patch 'users/:id/genres', to: 'users#update_genres', as: 'update_user_genres'
-patch 'users/:id/services', to: 'users#update_services', as: 'update_user_services'
-patch 'users/:id/availability', to: 'users#update_availability', as: 'update_user_availability'
-get 'profiles/:id', to: 'profiles#show', as: 'profile'
-
-resources :music_genres, only: [:index]
-
-resources :music_genres, only: [:index] do
-    member do
-      post 'add_to_user'
-      delete 'remove_from_user'
+Rails.application.routes.draw do
+    root "home#index"
+  
+    devise_for :users
+  
+    get 'profiles/:id', to: 'profiles#show', as: 'profile'
+  
+    resources :users, only: [] do
+      patch 'bio', to: 'users#update_bio', on: :member
+      patch 'genres', to: 'users#update_genres', on: :member
+      patch 'services', to: 'users#update_services', on: :member
+      patch 'availability', to: 'users#update_availability', on: :member
     end
+  
+    resources :music_genres, only: [:index] do
+      post 'add_to_user', on: :member
+      delete 'remove_from_user', on: :member
+    end
+  
+    resources :availabilities, only: [:index, :update]
+  
+    resource :contact, only: [:new, :create]
   end
   
-  resources :availabilities, only: [:index, :update]
-
-  resource :contact, only: [:new, :create]
-
-  root "home#index"
-
