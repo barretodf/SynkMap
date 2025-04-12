@@ -5,3 +5,11 @@ patch 'users/:id/availability', to: 'users#update_availability', as: 'update_use
 get 'profiles/:id', to: 'profiles#show', as: 'profile'
 
 resources :music_genres, only: [:index]
+
+resources :music_genres, only: [:index] do
+    member do
+      post 'add_to_user'
+      delete 'remove_from_user'
+    end
+  end
+  
