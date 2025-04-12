@@ -13,3 +13,5 @@ resources :music_genres, only: [:index] do
     end
   end
   
+  resources :availabilities, only: [:index, :update]
+
