@@ -17,3 +17,5 @@ resources :music_genres, only: [:index] do
 
   resource :contact, only: [:new, :create]
 
+  root "home#index"
+
