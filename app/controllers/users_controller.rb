@@ -3,18 +3,20 @@ class UsersController < ApplicationController
   
     # BIO
     def update_bio
-      if @user.update(biografia: params[:biografia])
+      @user = User.find(params[:id])
+      if @user.update(bio: params[:user][:bio])
         respond_to do |format|
-          format.html { redirect_to @user, notice: "Biografia atualizada com sucesso!" }
-          format.json { render json: { success: true, biografia: @user.biografia } }
+          format.html { redirect_to profile_path(@user), notice: 'Bio atualizada com sucesso.' }
+          format.json { render json: { bio: @user.bio }, status: :ok }
         end
       else
         respond_to do |format|
-          format.html { redirect_to @user, alert: "Erro ao atualizar biografia." }
-          format.json { render json: { success: false, errors: @user.errors.full_messages }, status: :unprocessable_entity }
+          format.html { render :show, alert: 'Erro ao atualizar bio.' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
     end
+    
   
     # Placeholder para os próximos
     def update_genres

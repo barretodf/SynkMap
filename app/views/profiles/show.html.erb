@@ -1,0 +1,63 @@
+<h1 class="text-2xl font-bold mb-4">Perfil do Músico</h1>
+
+<p><strong>Nome:</strong> <%= @user.nome %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Localização:</strong> <%= @user.localizacao %></p>
+<h2 class="text-xl font-semibold mt-6">Biografia</h2>
+
+<div data-controller="bio">
+  <!-- Texto atual -->
+  <div data-bio-target="display">
+    <p><%= @user.biografia %></p>
+
+    <% if @is_owner %>
+      <button type="button"
+              data-action="click->bio#edit"
+              class="text-blue-600 hover:underline text-sm">
+        Editar
+      </button>
+    <% end %>
+  </div>
+
+  <!-- Formulário -->
+  <form action="<%= update_bio_user_path(@user) %>" method="post" data-action="submit->bio#update" data-bio-target="form">
+    <input type="hidden" name="_method" value="patch" />
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <!-- Campo da bio -->
+    <textarea name="user[bio]"><%= @user.bio %></textarea>
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>
+
+<p><strong>Status:</strong> <%= @user.status ? "Disponível" : "Indisponível" %></p>
+<p><strong>Avaliação:</strong> <%= @user.avaliacao %></p>
+<p><strong>Telefone:</strong> <%= @user.telefone %></p>
+
+<hr class="my-4">
+
+<h2 class="text-xl font-semibold">Gêneros Musicais</h2>
+<ul>
+  <% @user.music_genres.each do |genre| %>
+    <li><%= genre.nome %></li>
+  <% end %>
+</ul>
+
+<hr class="my-4">
+
+<h2 class="text-xl font-semibold">Serviços</h2>
+<ul>
+  <% @user.service_types.each do |service| %>
+    <li><%= service.nome %> - R$ <%= service.preco %></li>
+  <% end %>
+</ul>
+
+<hr class="my-4">
+
+<h2 class="text-xl font-semibold">Disponibilidade</h2>
+<ul>
+  <% @user.availabilities.each do |a| %>
+    <li><%= a.data.strftime("%d/%m/%Y") %>: <%= a.disponivel ? "Disponível" : "Indisponível" %></li>
+  <% end %>
+</ul>
