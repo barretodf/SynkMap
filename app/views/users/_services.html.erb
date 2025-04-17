@@ -1,0 +1,20 @@
+<ul class="space-y-2">
+  <% user.service_types.each do |service| %>
+    <li class="flex justify-between items-center">
+      <span><%= service.nome %> - R$ <%= number_to_currency(service.preco, unit: "", separator: ",", delimiter: ".") %></span>
+      <% if @is_owner %>
+        <div class="flex gap-2">
+          <button data-action="click->services#edit"
+                  data-id="<%= service.id %>"
+                  data-nome="<%= service.nome %>"
+                  data-preco="<%= service.preco %>"
+                  class="text-blue-600 text-sm hover:underline">Editar</button>
+
+          <button data-action="click->services#remove"
+                  data-id="<%= service.id %>"
+                  class="text-red-600 text-sm hover:underline">Excluir</button>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

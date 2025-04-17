@@ -111,7 +111,36 @@
       <li><%= service.nome %> - R$ <%= service.preco %></li>
     <% end %>
   </ul>
-  
+# -----------------------------------
+<div data-controller="services">
+  <div data-services-target="list">
+    <%= render partial: "users/services", locals: { user: @user } %>
+  </div>
+
+  <% if @is_owner %>
+    <form data-services-target="form"
+          data-action="submit->services#submit"
+          class="mt-4 space-y-2">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="hidden" data-services-target="serviceId">
+
+      <input type="text" placeholder="Nome do serviço"
+             data-services-target="nome"
+             class="border w-full p-2 text-sm rounded" required>
+
+      <input type="number" step="0.01" placeholder="Preço"
+             data-services-target="preco"
+             class="border w-full p-2 text-sm rounded" required>
+
+      <div class="flex gap-2">
+        <button type="submit" class="bg-green-500 text-white px-3 py-1 text-sm rounded">Salvar</button>
+        <button type="button" data-action="click->services#cancel" class="text-sm text-gray-500">Cancelar</button>
+      </div>
+    </form>
+  <% end %>
+</div>
+
+# ------------------------------
   <!-- 📅 Disponibilidade -->
   <hr class="my-6">
   <h2 class="text-xl font-semibold">Disponibilidade</h2>

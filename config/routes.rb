@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   resources :availabilities, only: [:index, :update]
 
   resource :contact, only: [:new, :create]
+
+  resources :service_types, only: [:create, :update, :destroy]
+
 end
