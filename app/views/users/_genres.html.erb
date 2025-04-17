@@ -1,0 +1,9 @@
+<% if user && user.music_genres.any? %>
+  <ul class="music-genres-list">
+    <% user.music_genres.each do |genre| %>
+      <li><%= genre.nome %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhum gênero musical encontrado.</p>
+<% end %>
