@@ -1,0 +1,16 @@
+<div class="profile-section">
+  <div class="profile-pic"></div>
+  <div class="profile-info">
+    <h2><%= @user.name %></h2>
+    <div class="location">
+      <div class="dot"></div>
+      <%= @user.location %>
+    </div>
+    <div class="rating">
+      <span class="available"><%= @user.available ? "Disponível" : "Indisponível" %></span>
+      <span class="stars">★★★★★</span> <%= @user.rating || "N/A" %>
+    </div>
+  </div>
+  <div class="photo-placeholder"></div>
+  <span class="edit-icon">✏️</span>
+</div>

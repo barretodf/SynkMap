@@ -1,0 +1,1 @@
+# Configurações de assets movidas para config/application.rb ou desnecessárias com propshaft

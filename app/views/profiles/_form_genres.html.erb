@@ -1,0 +1,7 @@
+<%= form_with model: @user, url: profile_path(@user), local: true, class: "form-genres" do |form| %>
+    <div>
+      <%= form.label :genre_names, "Adicionar Gênero Musical" %>
+      <%= form.text_field :genre_names, value: @user.genres.pluck(:name).join(", "), placeholder: "Ex: Pop, Jazz" %>
+    </div>
+    <%= form.submit "Salvar" %>
+  <% end %>

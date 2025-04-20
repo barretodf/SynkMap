@@ -1,0 +1,64 @@
+<div class="sidebar">
+  <div class="section contact-section">
+    <h2>Contato</h2>
+    <div class="contact-btn">Enviar um contato</div>
+    <div class="contact-option">
+      <span>📧</span> Enviar mensagem pela plataforma
+    </div>
+    <div class="contact-option">
+      <span>📞</span> Telefone visível após contato inicial
+    </div>
+    <span class="edit-icon">✏️</span>
+  </div>
+  <div class="section prices-section">
+    <h3>Preços</h3>
+    <% @user.prices.each do |price| %>
+      <div class="price-item">
+        <span><%= price.description %></span>
+        <span><%= number_to_currency(price.amount, unit: "R$", separator: ",", delimiter: ".") %></span>
+      </div>
+    <% end %>
+    <div class="note">
+      * Valores podem variar conforme necessidades específicas do evento
+    </div>
+    <span class="edit-icon">✏️</span>
+  </div>
+  <div class="section availability-section">
+    <h3>Disponibilidade</h3>
+    <div class="calendar-header">
+      <span>Abril 2023</span>
+      <div class="arrows">
+        <span><</span>
+        <span>></span>
+      </div>
+    </div>
+    <div class="calendar">
+      <div class="day-header">Do</div>
+      <div class="day-header">Se</div>
+      <div class="day-header">Te</div>
+      <div class="day-header">Qu</div>
+      <div class="day-header">Qu</div>
+      <div class="day-header">Se</div>
+      <div class="day-header">Sa</div>
+      <% (20..30).each do |day| %>
+        <div class="day unavailable"><%= day %></div>
+      <% end %>
+      <% (1..31).each do |day| %>
+        <div class="day <%= day <= 3 ? 'unavailable' : 'available' %>"><%= day %></div>
+      <% end %>
+      <div class="day unavailable">1</div>
+      <div class="day unavailable">2</div>
+    </div>
+    <div class="legend">
+      <div class="item available">
+        <div class="dot"></div>
+        Disponível
+      </div>
+      <div class="item unavailable">
+        <div class="dot"></div>
+        Indisponível
+      </div>
+    </div>
+    <span class="edit-icon">✏️</span>
+  </div>
+</div>

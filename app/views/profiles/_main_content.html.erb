@@ -1,0 +1,16 @@
+<div class="main-content">
+  <div class="section genres-section">
+    <h3>Gêneros Musicais</h3>
+    <div class="genres">
+      <% @user.genres.pluck(:name).each do |genre| %>
+        <span><%= genre %></span>
+      <% end %>
+    </div>
+    <span class="edit-icon">✏️</span>
+  </div>
+  <div class="section bio-section">
+    <h3>Biografia</h3>
+    <p><%= @user.bio %></p>
+    <span class="edit-icon">✏️</span>
+  </div>
+</div>
