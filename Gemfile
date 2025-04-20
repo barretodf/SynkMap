@@ -66,3 +66,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "propshaft"
+
+gem "fastimage", "~> 2.3"

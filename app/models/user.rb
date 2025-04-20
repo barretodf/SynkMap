@@ -2,6 +2,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   has_many :genres, dependent: :destroy
   has_many :prices, dependent: :destroy
+  has_one_attached :banner
 
   def genre_names
     genres.pluck(:name).join(", ")

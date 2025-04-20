@@ -106,6 +106,7 @@ GEM
       warden (~> 1.2.3)
     drb (2.2.1)
     erubi (1.13.1)
+    fastimage (2.4.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.7)
@@ -262,6 +263,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  fastimage (~> 2.3)
   importmap-rails (~> 2.0)
   jbuilder (~> 2.12)
   propshaft
