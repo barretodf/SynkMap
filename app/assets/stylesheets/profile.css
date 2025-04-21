@@ -499,27 +499,7 @@ body {
     margin-top: 5px;
 }
 
-/* --------------------- */
-.profile-section {
-    position: relative;
-    height: 200px;
-    background: linear-gradient(90deg, #d3d3d3 0%, #a9a9a9 100%);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    z-index: 0;
-}
-
-.profile-pic {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    border-radius: 50%;
-    margin-right: 20px;
-    z-index: 2;
-}
-
+/* ------Fundo Preto Container----------- */
 .profile-info {
     background: rgba(0, 0, 0, 0.7);
     /* Fundo preto semi-transparente para todo o contêiner */
@@ -634,32 +614,44 @@ body {
     background-color: #ccc;
     color: #000;
 }
+
 .info-form input[type="submit"]:hover,
 .info-form .cancel-btn:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
+
 .profile-info .dot.available {
-    background-color: #04fc3e !important; /* Verde para Disponível */
-  }
-  .profile-info .dot.unavailable {
-    background-color: #f8021b !important; /* Vermelho para Indisponível */
-  }
-  .profile-info .dot.open {
-    background-color: #ff8c00 !important; /* Laranja para Aberto para propostas */
-  }
-  .profile-info .rating .available.available {
-    background-color: #28a745 !important;
-  }
-  .profile-info .rating .available.unavailable {
-    background-color: #dc3545 !important;
-  }
-  .profile-info .rating .available.open {
+    background-color: #04fc3e !important;
+    /* Verde para Disponível */
+}
+
+.profile-info .dot.unavailable {
+    background-color: #f8021b !important;
+    /* Vermelho para Indisponível */
+}
+
+.profile-info .dot.open {
     background-color: #ff8c00 !important;
-  }
-  .profile-pic-wrapper {
+    /* Laranja para Aberto para propostas */
+}
+
+.profile-info .rating .available.available {
+    background-color: #28a745 !important;
+}
+
+.profile-info .rating .available.unavailable {
+    background-color: #dc3545 !important;
+}
+
+.profile-info .rating .available.open {
+    background-color: #ff8c00 !important;
+}
+
+.profile-pic-wrapper {
     position: relative;
-  }
-  .edit-pic-icon {
+}
+
+.edit-pic-icon {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -673,8 +665,9 @@ body {
     cursor: pointer;
     font-size: 12px;
     z-index: 3;
-  }
-  .profile-pic-form {
+}
+
+.profile-pic-form {
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
@@ -685,23 +678,27 @@ body {
     width: 200px;
     z-index: 3;
     box-sizing: border-box;
-  }
-  .profile-pic-form div {
+}
+
+.profile-pic-form div {
     margin-bottom: 10px;
-  }
-  .profile-pic-form label {
+}
+
+.profile-pic-form label {
     display: block;
     font-size: 14px;
-  }
-  .profile-pic-form input[type="file"] {
+}
+
+.profile-pic-form input[type="file"] {
     width: 100%;
     padding: 5px;
     border-radius: 3px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
-  .profile-pic-form input[type="submit"],
-  .profile-pic-form .cancel-btn {
+}
+
+.profile-pic-form input[type="submit"],
+.profile-pic-form .cancel-btn {
     background-color: #000;
     color: #fff;
     padding: 8px 15px;
@@ -711,12 +708,71 @@ body {
     margin-right: 10px;
     display: inline-block;
     font-size: 14px;
-  }
-  .profile-pic-form .cancel-btn {
+}
+
+.profile-pic-form .cancel-btn {
     background-color: #666;
     color: #fff;
-  }
-  .profile-pic-form input[type="submit"]:hover,
-  .profile-pic-form .cancel-btn:hover {
+}
+
+.profile-pic-form input[type="submit"]:hover,
+.profile-pic-form .cancel-btn:hover {
     opacity: 0.9;
+}
+
+.flash-message {
+    background-color: #e6ffe6;
+    /* Verde claro */
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.flash-message.alert {
+    background-color: #ffe6e6;
+    /* Vermelho claro para erros */
+}
+
+
+/* --------- Foto do perfil ------------ */
+.profile-section {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(90deg, #d3d3d3 0%, #a9a9a9 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    padding: 20px;
+    z-index: 0;
+  }
+  .profile-pic-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    height: 250px;
+  }
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-right: 20px;
+    z-index: 2;
+  }
+  .edit-pic-icon {
+    position: absolute;
+    top: 100px; /* Canto superior */
+    left: 130px; /* Canto direito, ajustado para ficar dentro da bola */
+    background-color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 3;
   }

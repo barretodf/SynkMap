@@ -1,3 +1,16 @@
+<% if flash[:notice] || flash[:alert] %>
+  <div class="flash-message <%= flash[:notice] ? 'notice' : 'alert' %>">
+    <%= flash[:notice] || flash[:alert] %>
+  </div>
+  <script>
+    setTimeout(() => {
+      const flashMessage = document.querySelector('.flash-message');
+      if (flashMessage) {
+        flashMessage.style.display = 'none';
+      }
+    }, 5000);
+  </script>
+<% end %>
 <div class="profile-section" style="<%= @user.respond_to?(:banner) && @user.banner.attached? ? "background: url(#{rails_blob_url(@user.banner)}) no-repeat center/cover;" : "" %>">
   <div class="profile-pic-wrapper">
     <div class="profile-pic" style="<%= @user.respond_to?(:profile_picture) && @user.profile_picture.attached? ? "background: url(#{rails_blob_url(@user.profile_picture)}) no-repeat center/cover;" : "" %>"></div>
@@ -39,7 +52,7 @@
         </div>
         <div>
           <%= form.label :available, "Disponibilidade" %>
-          <%= form.select :active, options_for_select([["Disponível", "Disponível"], ["Indisponível", "Indisponível"], ["Aberto para propostas", "Aberto para propostas"]], @user.available || "Indisponível") %>
+          <%= form.select :available, options_for_select([["Disponível", "Disponível"], ["Indisponível", "Indisponível"], ["Aberto para propostas", "Aberto para propostas"]], @user.available || "Indisponível") %>
         </div>
         <%= form.submit "Salvar" %>
         <button type="button" onclick="document.querySelector('.info-form').style.display = 'none';" class="cancel-btn">Cancelar</button>
