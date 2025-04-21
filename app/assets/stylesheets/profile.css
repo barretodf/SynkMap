@@ -597,6 +597,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 3;
+    box-sizing: border-box;
 }
 
 .info-form div {
@@ -614,6 +615,7 @@ body {
     padding: 5px;
     border-radius: 3px;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 .info-form input[type="submit"],
@@ -633,10 +635,10 @@ body {
 }
 
 .profile-info .dot.available {
-    background-color: #28a745 !important; /* Verde para Disponível */
+    background-color: #04fc3e !important; /* Verde para Disponível */
   }
   .profile-info .dot.unavailable {
-    background-color: #dc3545 !important; /* Vermelho para Indisponível */
+    background-color: #f8021b !important; /* Vermelho para Indisponível */
   }
   .profile-info .dot.open {
     background-color: #ff8c00 !important; /* Laranja para Aberto para propostas */
