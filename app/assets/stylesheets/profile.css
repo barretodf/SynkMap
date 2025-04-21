@@ -405,8 +405,73 @@ body {
 .profile-section .profile-info-overlay {
   position: absolute;
   bottom: 20px;
-  left: 150px;
+  left: 200px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 5px;
-}
+} 
+
+/* .profile-section .profile-info-overlay {
+    background-color: rgb(251, 2, 2);
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+  } */
+  .profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+  }
+  .location, .rating {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  /* --------------------- */
+  .profile-section {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(90deg, #d3d3d3 0%, #a9a9a9 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    z-index: 0;
+  }
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-right: 20px;
+    z-index: 2;
+  }
+  .profile-info {
+    background: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente para todo o contêiner */
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1; /* Entre o banner e o conteúdo */
+  }
+  .info-background {
+    display: none; /* Não precisamos mais disso */
+  }
+  .profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+    background: none; /* Remove fundo individual */
+  }
+  .location {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 5px;
+    background: none; /* Remove fundo individual */
+  }
+  .rating {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 5px;
+    background: none; /* Remove fundo individual */
+  }

@@ -1,30 +1,31 @@
 <div class="profile-section" style="<%= @user.respond_to?(:banner) && @user.banner.attached? ? "background: url(#{rails_blob_url(@user.banner)}) no-repeat center/cover;" : "" %>">
-     <div class="profile-pic"></div>
-     <div class="profile-info">
-       <h2><%= @user.name %></h2>
-       <div class="location">
-         <div class="dot"></div>
-         <%= @user.location || "Localização não definida" %>
-       </div>
-       <div class="rating">
-         <span class="available"><%= @user.available ? "Disponível" : "Indisponível" %></span>
-         <span class="stars">★★★★★</span> <%= @user.rating || "N/A" %>
-       </div>
-     </div>
-     <% unless @user.banner.attached? %>
-       <div class="photo-placeholder">
-         <p>Tamanho mínimo: 800x200px</p>
-       </div>
-     <% end %>
-     <span class="edit-icon" onclick="document.querySelector('.banner-form').style.display = document.querySelector('.banner-form').style.display === 'none' ? 'block' : 'none';">✏️</span>
-     <div class="banner-form" style="display: none;">
-       <%= form_with model: @user, url: profile_path(@user), local: true, multipart: true do |form| %>
-         <div>
-           <%= form.label :banner, "Atualizar Banner" %>
-           <%= form.file_field :banner %>
-         </div>
-         <%= form.submit "Enviar" %>
-         <button type="button" onclick="document.querySelector('.banner-form').style.display = 'none';" class="cancel-btn">Cancelar</button>
-       <% end %>
-     </div>
-   </div>
+  <div class="profile-pic"></div>
+  <div class="profile-info">
+    <div class="info-background"></div>
+    <h2><%= @user.name %></h2>
+    <div class="location">
+      <div class="dot <%= @user.available ? 'available' : 'unavailable' %>"></div>
+      <%= @user.location || "Localização não definida" %>
+    </div>
+    <div class="rating">
+      <span class="available"><%= @user.available ? "Disponível" : "Indisponível" %></span>
+      <span class="stars">★★★★★</span> <%= @user.rating || "N/A" %>
+    </div>
+  </div>
+  <% unless @user.banner.attached? %>
+    <div class="photo-placeholder">
+      <p>Tamanho mínimo: 800x200px</p>
+    </div>
+  <% end %>
+  <span class="edit-icon" onclick="document.querySelector('.banner-form').style.display = document.querySelector('.banner-form').style.display === 'none' ? 'block' : 'none';">✏️</span>
+  <div class="banner-form" style="display: none;">
+    <%= form_with model: @user, url: profile_path(@user), local: true, multipart: true do |form| %>
+      <div>
+        <%= form.label :banner, "Atualizar Banner" %>
+        <%= form.file_field :banner %>
+      </div>
+      <%= form.submit "Enviar" %>
+      <button type="button" onclick="document.querySelector('.banner-form').style.display = 'none';" class="cancel-btn">Cancelar</button>
+    <% end %>
+  </div>
+</div>
