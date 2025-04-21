@@ -630,10 +630,14 @@ body {
 }
 
 .info-form .cancel-btn {
+    margin-top: 10px;
     background-color: #ccc;
     color: #000;
 }
-
+.info-form input[type="submit"]:hover,
+.info-form .cancel-btn:hover {
+  opacity: 0.9;
+}
 .profile-info .dot.available {
     background-color: #04fc3e !important; /* Verde para Disponível */
   }
