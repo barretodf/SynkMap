@@ -632,21 +632,21 @@ body {
     color: #000;
 }
 
-.dot.available,
-.rating .available {
-    background-color: #28a745;
-    /* Verde para Disponível */
-}
-
-.dot.unavailable,
-.rating .unavailable {
-    background-color: #dc3545;
-    /* Vermelho para Indisponível */
-}
-
-.dot.open,
-.rating .open {
-    background-color: #ff8c00;
-    /* Laranja para Aberto para propostas */
-}
-
+.profile-info .dot.available {
+    background-color: #28a745 !important; /* Verde para Disponível */
+  }
+  .profile-info .dot.unavailable {
+    background-color: #dc3545 !important; /* Vermelho para Indisponível */
+  }
+  .profile-info .dot.open {
+    background-color: #ff8c00 !important; /* Laranja para Aberto para propostas */
+  }
+  .profile-info .rating .available.available {
+    background-color: #28a745 !important;
+  }
+  .profile-info .rating .available.unavailable {
+    background-color: #dc3545 !important;
+  }
+  .profile-info .rating .available.open {
+    background-color: #ff8c00 !important;
+  }

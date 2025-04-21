@@ -7,11 +7,11 @@
       <span class="edit-info-icon" onclick="document.querySelector('.info-form').style.display = document.querySelector('.info-form').style.display === 'none' ? 'block' : 'none';">✏️</span>
     </div>
     <div class="location">
-      <div class="dot <%= @user.available == 'Disponível' ? 'available' : @user.available == 'Indisponível' ? 'unavailable' : 'open' %>"></div>
+      <div class="dot <%= case @user.available when 'Disponível' then 'available' when 'Indisponível' then 'unavailable' else 'open' end %>"></div>
       <%= @user.location || "Localização não definida" %>
     </div>
     <div class="rating">
-      <span class="available <%= @user.available == 'Disponível' ? 'available' : @user.available == 'Indisponível' ? 'unavailable' : 'open' %>"><%= @user.available || "Indisponível" %></span>
+      <span class="available <%= case @user.available when 'Disponível' then 'available' when 'Indisponível' then 'unavailable' else 'open' end %>"><%= @user.available || "Indisponível" %></span>
       <span class="stars">★★★★★</span> <%= @user.rating || "N/A" %>
     </div>
     <div class="info-form" style="display: none;">
