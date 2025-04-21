@@ -1,5 +1,18 @@
 <div class="profile-section" style="<%= @user.respond_to?(:banner) && @user.banner.attached? ? "background: url(#{rails_blob_url(@user.banner)}) no-repeat center/cover;" : "" %>">
-  <div class="profile-pic"></div>
+  <div class="profile-pic-wrapper">
+    <div class="profile-pic" style="<%= @user.respond_to?(:profile_picture) && @user.profile_picture.attached? ? "background: url(#{rails_blob_url(@user.profile_picture)}) no-repeat center/cover;" : "" %>"></div>
+    <span class="edit-pic-icon" onclick="document.querySelector('.profile-pic-form').style.display = document.querySelector('.profile-pic-form').style.display === 'none' ? 'block' : 'none';">✏️</span>
+    <div class="profile-pic-form" style="display: none;">
+      <%= form_with model: @user, url: profile_path(@user), local: true, multipart: true do |form| %>
+        <div>
+          <%= form.label :profile_picture, "Atualizar Foto de Perfil" %>
+          <%= form.file_field :profile_picture %>
+        </div>
+        <%= form.submit "Enviar" %>
+        <button type="button" onclick="document.querySelector('.profile-pic-form').style.display = 'none';" class="cancel-btn">Cancelar</button>
+      <% end %>
+    </div>
+  </div>
   <div class="profile-info">
     <div class="info-background"></div>
     <div class="info-header">
@@ -26,7 +39,7 @@
         </div>
         <div>
           <%= form.label :available, "Disponibilidade" %>
-          <%= form.select :available, options_for_select([["Disponível", "Disponível"], ["Indisponível", "Indisponível"], ["Aberto para propostas", "Aberto para propostas"]], @user.available || "Indisponível") %>
+          <%= form.select :active, options_for_select([["Disponível", "Disponível"], ["Indisponível", "Indisponível"], ["Aberto para propostas", "Aberto para propostas"]], @user.available || "Indisponível") %>
         </div>
         <%= form.submit "Salvar" %>
         <button type="button" onclick="document.querySelector('.info-form').style.display = 'none';" class="cancel-btn">Cancelar</button>
