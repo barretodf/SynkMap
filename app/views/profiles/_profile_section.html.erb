@@ -18,15 +18,15 @@
       <%= form_with model: @user, url: profile_path(@user), local: true do |form| %>
         <div>
           <%= form.label :name, "Nome" %>
-          <%= form.text_field :name %>
+          <%= form.text_field :name, placeholder: "Digite seu nome" %>
         </div>
         <div>
           <%= form.label :location, "Cidade" %>
-          <%= form.text_field :location %>
+          <%= form.text_field :location, placeholder: "Digite sua cidade e bairro" %>
         </div>
         <div>
           <%= form.label :available, "Disponibilidade" %>
-          <%= form.select :available, options_for_select([["Disponível", "Disponível"], ["Indisponível", "Indisponível"], ["Aberto para propostas", "Aberto para propostas"]], @user.available) %>
+          <%= form.select :available, options_for_select([["Disponível", "Disponível"], ["Indisponível", "Indisponível"], ["Aberto para propostas", "Aberto para propostas"]], @user.available || "Indisponível") %>
         </div>
         <%= form.submit "Salvar" %>
         <button type="button" onclick="document.querySelector('.info-form').style.display = 'none';" class="cancel-btn">Cancelar</button>
