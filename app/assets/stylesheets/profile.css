@@ -742,17 +742,20 @@ body {
     background: linear-gradient(90deg, #d3d3d3 0%, #a9a9a9 100%);
     border-radius: 10px;
     display: flex;
-    align-items: center; /* Centraliza verticalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
     padding: 20px;
     z-index: 0;
-  }
-  .profile-pic-wrapper {
+}
+
+.profile-pic-wrapper {
     position: relative;
     flex-shrink: 0;
     display: flex;
     height: 250px;
-  }
-  .profile-pic {
+}
+
+.profile-pic {
     width: 100px;
     height: 100px;
     background-color: #fff;
@@ -761,11 +764,14 @@ body {
     z-index: 2;
     border: 2px solid #fff;
     box-shadow: #000 0px 0px 5px;
-  }
-  .edit-pic-icon {
+}
+
+.edit-pic-icon {
     position: absolute;
-    top: 100px; /* Canto superior */
-    left: 130px; /* Canto direito, ajustado para ficar dentro da bola */
+    top: 100px;
+    /* Canto superior */
+    left: 130px;
+    /* Canto direito, ajustado para ficar dentro da bola */
     background-color: #fff;
     border-radius: 50%;
     width: 20px;
@@ -776,4 +782,93 @@ body {
     cursor: pointer;
     font-size: 12px;
     z-index: 3;
-  }
+}
+
+.bio-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.bio-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bio-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.edit-bio-icon {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 12px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.bio-content {
+    position: relative;
+}
+
+.bio-text {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 100px;
+    /* Garante que o espaço seja consistente */
+}
+
+.bio-form {
+    width: 100%;
+}
+
+.bio-textarea {
+    width: 100%;
+    min-height: 100px;
+    /* Mesmo altura que o texto */
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.bio-actions {
+    margin-top: 10px;
+}
+
+.bio-form input[type="submit"],
+.bio-form .cancel-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.bio-form .cancel-btn {
+    background-color: #666;
+    color: #fff;
+}
+
+.bio-form input[type="submit"]:hover,
+.bio-form .cancel-btn:hover {
+    opacity: 0.9;
+}

@@ -6,12 +6,13 @@
     setTimeout(() => {
       const flashMessage = document.querySelector('.flash-message');
       if (flashMessage) {
-        flashMessage.remove(); /* Remove completamente do DOM */
+        flashMessage.remove();
       }
     }, 5000);
   </script>
-  <% flash[:notice] = nil; flash[:alert] = nil; %> <!-- Limpa os flashes após exibição -->
+  <% flash[:notice] = nil; flash[:alert] = nil; %>
 <% end %>
+# ------------------------Banner------------------------
 <div class="profile-section" style="<%= @user.respond_to?(:banner) && @user.banner.attached? ? "background: url(#{rails_blob_url(@user.banner)}) no-repeat center/cover;" : "" %>">
   <div class="profile-pic-wrapper">
     <div class="profile-pic" style="<%= @user.respond_to?(:profile_picture) && @user.profile_picture.attached? ? "background: url(#{rails_blob_url(@user.profile_picture)}) no-repeat center/cover;" : "" %>"></div>

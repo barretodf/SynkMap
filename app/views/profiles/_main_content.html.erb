@@ -8,9 +8,36 @@
     </div>
     <span class="edit-icon">✏️</span>
   </div>
-  <div class="section bio-section">
+  
+<div class="bio-section">
+  <div class="bio-header">
     <h3>Biografia</h3>
-    <p><%= @user.bio %></p>
-    <span class="edit-icon">✏️</span>
+    <span class="edit-bio-icon" onclick="toggleBioEdit()">✏️</span>
   </div>
+  <div class="bio-content">
+    <p class="bio-text" style="display: block;"><%= @user.bio || "Nenhuma biografia disponível." %></p>
+    <div class="bio-form" style="display: none;">
+      <%= form_with model: @user, url: profile_path(@user), local: true do |form| %>
+        <%= form.text_area :bio, placeholder: "Escreva algo sobre você...", rows: 5, class: "bio-textarea", value: @user.bio || "" %>
+        <div class="bio-actions">
+          <%= form.submit "Salvar", onclick: "toggleBioEdit()" %>
+          <button type="button" onclick="toggleBioEdit()" class="cancel-btn">Cancelar</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleBioEdit() {
+    const bioText = document.querySelector('.bio-text');
+    const bioForm = document.querySelector('.bio-form');
+    if (bioText.style.display === 'block') {
+      bioText.style.display = 'none';
+      bioForm.style.display = 'block';
+    } else {
+      bioText.style.display = 'block';
+      bioForm.style.display = 'none';
+    }
+  }
+</script>
 </div>
