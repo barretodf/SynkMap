@@ -610,7 +610,6 @@ body {
 }
 
 .info-form .cancel-btn {
-    margin-top: 10px;
     background-color: #ccc;
     color: #000;
 }
@@ -760,6 +759,8 @@ body {
     border-radius: 50%;
     margin-right: 20px;
     z-index: 2;
+    border: 2px solid #fff;
+    box-shadow: #000 0px 0px 5px;
   }
   .edit-pic-icon {
     position: absolute;

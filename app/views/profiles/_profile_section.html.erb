@@ -6,10 +6,11 @@
     setTimeout(() => {
       const flashMessage = document.querySelector('.flash-message');
       if (flashMessage) {
-        flashMessage.style.display = 'none';
+        flashMessage.remove(); /* Remove completamente do DOM */
       }
     }, 5000);
   </script>
+  <% flash[:notice] = nil; flash[:alert] = nil; %> <!-- Limpa os flashes após exibição -->
 <% end %>
 <div class="profile-section" style="<%= @user.respond_to?(:banner) && @user.banner.attached? ? "background: url(#{rails_blob_url(@user.banner)}) no-repeat center/cover;" : "" %>">
   <div class="profile-pic-wrapper">
