@@ -23,6 +23,6 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:genre_names, :banner)
+    params.require(:user).permit(:name, :location, :available, :genre_names, :banner)
   end
 end
