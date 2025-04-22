@@ -1,43 +1,66 @@
 <div class="main-content">
   <div class="section genres-section">
-    <h3>Gêneros Musicais</h3>
-    <div class="genres">
-      <% @user.genres.pluck(:name).each do |genre| %>
-        <span><%= genre %></span>
-      <% end %>
+    <div class="genres-header">
+      <h3>Gêneros Musicais</h3>
+      <span class="edit-genres-icon" onclick="toggleGenresEdit(event)">✏️</span>
     </div>
-    <span class="edit-icon">✏️</span>
-  </div>
-  
-<div class="bio-section">
-  <div class="bio-header">
-    <h3>Biografia</h3>
-    <span class="edit-bio-icon" onclick="toggleBioEdit()">✏️</span>
-  </div>
-  <div class="bio-content">
-    <p class="bio-text" style="display: block;"><%= @user.bio || "Nenhuma biografia disponível." %></p>
-    <div class="bio-form" style="display: none;">
-      <%= form_with model: @user, url: profile_path(@user), local: true do |form| %>
-        <%= form.text_area :bio, placeholder: "Escreva algo sobre você...", rows: 5, class: "bio-textarea", value: @user.bio || "" %>
-        <div class="bio-actions">
-          <%= form.submit "Salvar", onclick: "toggleBioEdit()" %>
-          <button type="button" onclick="toggleBioEdit()" class="cancel-btn">Cancelar</button>
-        </div>
-      <% end %>
+    <div class="genres-content">
+      <div class="genres-text" style="display: block;">
+        <% if @user.genres.any? %>
+          <% @user.genres.pluck(:name).each do |genre| %>
+            <span><%= genre %></span>
+          <% end %>
+        <% else %>
+          <p>Nenhum gênero musical definido.</p>
+        <% end %>
+      </div>
+      <div class="genres-form" style="display: none;">
+        <%= form_with model: @user, url: profile_path(@user), method: :patch, local: true do |form| %>
+          <%= form.hidden_field :id %>
+          <%= form.text_field :genre_names, value: @user.genres.pluck(:name).join(", "), placeholder: "Pop, Jazz, MPB, Gospel Music", class: "genres-input" %>
+          <div class="genres-actions">
+            <%= form.submit "Salvar", class: "save-btn", onclick: "toggleGenresEdit(event)" %>
+            <button type="button" onclick="toggleGenresEdit(event)" class="cancel-btn">Cancelar</button>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-<script>
-  function toggleBioEdit() {
-    const bioText = document.querySelector('.bio-text');
-    const bioForm = document.querySelector('.bio-form');
-    if (bioText.style.display === 'block') {
-      bioText.style.display = 'none';
-      bioForm.style.display = 'block';
-    } else {
-      bioText.style.display = 'block';
-      bioForm.style.display = 'none';
+
+  <div class="bio-section">
+    <div class="bio-header">
+      <h3>Biografia</h3>
+      <span class="edit-bio-icon" onclick="toggleBioEdit(event)">✏️</span>
+    </div>
+    <div class="bio-content">
+      <p class="bio-text" style="display: block;"><%= @user.bio.presence || "Nenhuma biografia disponível." %></p>
+      <div class="bio-form" style="display: none;">
+        <%= form_with model: @user, url: profile_path(@user), method: :patch, local: true do |form| %>
+          <%= form.text_area :bio, placeholder: "Escreva algo sobre você...", rows: 5, class: "bio-textarea" %>
+          <div class="bio-actions">
+            <%= form.submit "Salvar", class: "save-btn", onclick: "toggleBioEdit(event)" %>
+            <button type="button" onclick="toggleBioEdit(event)" class="cancel-btn">Cancelar</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleGenresEdit(event) {
+      const genresSection = event.target.closest('.genres-section');
+      const genresText = genresSection.querySelector('.genres-text');
+      const genresForm = genresSection.querySelector('.genres-form');
+      genresText.style.display = genresText.style.display === 'block' ? 'none' : 'block';
+      genresForm.style.display = genresForm.style.display === 'none' ? 'block' : 'none';
     }
-  }
-</script>
+
+    function toggleBioEdit(event) {
+      const bioSection = event.target.closest('.bio-section');
+      const bioText = bioSection.querySelector('.bio-text');
+      const bioForm = bioSection.querySelector('.bio-form');
+      bioText.style.display = bioText.style.display === 'block' ? 'none' : 'block';
+      bioForm.style.display = bioForm.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 </div>

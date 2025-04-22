@@ -5,6 +5,13 @@ class ProfilesController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    # Atualizar os nomes dos gêneros, se fornecidos
+    if params[:genre_names].present?
+      @user.genre_names = params[:genre_names]
+    end
+
+    # Verificar e validar o banner, se fornecido
     if params[:user][:banner].present?
       image = params[:user][:banner]
       dimensions = FastImage.size(image.tempfile)
@@ -13,6 +20,8 @@ class ProfilesController < ApplicationController
         redirect_to profile_path(@user) and return
       end
     end
+
+    # Atualizar o usuário
     if @user.update(user_params)
       redirect_to profile_path(@user), notice: "Atualizado com sucesso!"
     else

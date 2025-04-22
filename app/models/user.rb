@@ -31,7 +31,6 @@ end
 class User < ApplicationRecord
   validates :name, presence: true
   has_many :genres, dependent: :destroy
-  has_many :prices, dependent: :destroy
   has_one_attached :banner
   has_one_attached :profile_picture
 
@@ -40,6 +39,10 @@ class User < ApplicationRecord
   end
 
   def genre_names=(names)
-    self.genres = names.split(",").map(&:strip).uniq.map { |name| genres.build(name: name) }
+    self.genres.destroy_all
+    names.split(",").map(&:strip).uniq.each do |name|
+      genres.build(name: name)
+    end
+    save
   end
 end
