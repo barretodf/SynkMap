@@ -5,33 +5,27 @@ class ProfilesController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    # Atualizar os nomes dos gêneros, se fornecidos
-    if params[:genre_names].present?
-      @user.genre_names = params[:genre_names]
-    end
-
-    # Verificar e validar o banner, se fornecido
-    if params[:user][:banner].present?
-      image = params[:user][:banner]
-      dimensions = FastImage.size(image.tempfile)
-      if dimensions && (dimensions[0] < 800 || dimensions[1] < 200)
-        flash[:alert] = "Imagem muito pequena! Tamanho mínimo: 800x200px."
-        redirect_to profile_path(@user) and return
+    if params[:user][:prices].present?
+      @user.prices.destroy_all
+      params[:user][:prices].each do |key, value|
+        next unless key.end_with?("_amount")
+        index = key.split("_").first
+        description = params[:user][:prices]["#{index}_description"]
+        amount = value.gsub(/[^0-9.]/, "").to_f
+        @user.prices.build(description: description, amount: amount) if amount > 0 && description.present?
       end
     end
 
-    # Atualizar o usuário
-    if @user.update(user_params)
-      redirect_to profile_path(@user), notice: "Atualizado com sucesso!"
+    if @user.save
+      redirect_to profile_path(@user), notice: "Preços atualizados com sucesso!"
     else
-      render :show, status: :unprocessable_entity
+      redirect_to profile_path(@user), alert: "Erro ao atualizar preços!"
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :location, :available, :genre_names, :banner, :profile_picture, :bio)
+    params.require(:user).permit(:name, :location, :available, :banner, :profile_picture, :bio, :genre_names, prices: {})
   end
 end

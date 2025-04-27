@@ -1,0 +1,195 @@
+.sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .section {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .section h2,
+  .section h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+  }
+  
+  .contact-section .contact-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .contact-section .contact-option {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-section .contact-option span {
+    margin-right: 5px;
+  }
+  
+  .prices-section .price-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .prices-section .note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .prices-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .edit-prices-icon {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 12px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .prices-form {
+    width: 100%;
+  }
+  
+  .price-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .price-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .price-field label {
+    width: 150px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .price-input {
+    flex: 1;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  .prices-actions {
+    margin-top: 10px;
+  }
+  
+  .prices-actions .submit-btn,
+  .prices-actions .cancel-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  
+  .prices-actions .cancel-btn {
+    background-color: #666;
+  }
+  
+  .prices-actions .submit-btn:hover,
+  .prices-actions .cancel-btn:hover {
+    opacity: 0.9;
+  }
+  
+  .availability-section .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .availability-section .calendar-header .arrows span {
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .availability-section .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  .availability-section .calendar .day-header {
+    font-weight: bold;
+  }
+  
+  .availability-section .calendar .day {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .availability-section .calendar .day.available {
+    background-color: #e0ffe0;
+  }
+  
+  .availability-section .calendar .day.unavailable {
+    background-color: #ffe0e0;
+  }
+  
+  .availability-section .legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  
+  .availability-section .legend .item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .availability-section .legend .item .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .availability-section .legend .item.available .dot {
+    background-color: #00ff00;
+  }
+  
+  .availability-section .legend .item.unavailable .dot {
+    background-color: #ff0000;
+  }
