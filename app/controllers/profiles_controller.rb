@@ -6,13 +6,16 @@ class ProfilesController < ApplicationController
   def update
     @user = User.find(params[:id])
     if params[:user][:prices].present?
-      @user.prices.destroy_all
       params[:user][:prices].each do |key, value|
         next unless key.end_with?("_amount")
         index = key.split("_").first
         description = params[:user][:prices]["#{index}_description"]
         amount = value.gsub(/[^0-9.]/, "").to_f
-        @user.prices.build(description: description, amount: amount) if amount > 0 && description.present?
+        if existing_price = @user.prices.find_by(description: description)
+          existing_price.update(amount: amount) if amount > 0
+        else
+          @user.prices.build(description: description, amount: amount) if amount > 0 && description.present?
+        end
       end
     end
 
