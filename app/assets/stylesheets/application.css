@@ -48,3 +48,103 @@ section {
     font-size: 16px;
     color: #555;
 }
+/* Seção de Preços */
+.prices-section {
+    margin-bottom: 20px;
+  }
+  
+  .prices-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .edit-prices-icon {
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+  
+  .price-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .price-inputs {
+    margin: 10px 0;
+  }
+  
+  .price-field {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  
+  .price-description-input,
+  .price-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+  }
+  
+  .price-input {
+    max-width: 100px;
+  }
+  
+  .remove-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .add-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  
+  .prices-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .submit-btn,
+  .cancel-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn {
+    background: #007bff;
+    color: white;
+  }
+  
+  .cancel-btn {
+    background: #6c757d;
+    color: white;
+  }
+  
+  .error-messages {
+    color: #ff4d4d;
+    margin-bottom: 10px;
+  }
+  
+  /* Animação para atualização */
+  #prices_content {
+    transition: opacity 0.3s ease;
+  }
+  
+  #prices_content[turbo-frame-replaced] {
+    opacity: 0;
+  }

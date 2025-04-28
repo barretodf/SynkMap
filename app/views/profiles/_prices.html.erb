@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "prices_content" do %>
+  <% if user.prices.any? %>
+    <% user.prices.each do |price| %>
+      <div class="price-item">
+        <span><%= price.description %></span>
+        <span><%= number_to_currency(price.amount, unit: "R$", separator: ",", delimiter: ".") %></span>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="price-item">
+      <span>Nenhum preço cadastrado</span>
+    </div>
+  <% end %>
+  <div class="note">* Valores podem variar conforme necessidades específicas do evento</div>
+<% end %>
+class Price < ApplicationRecord
+  belongs_to :user
+  validates :description, presence: true
+  validates :amount, numericality: { greater_than: 0 }
+end
