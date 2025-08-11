@@ -26,7 +26,7 @@ gem "turbo-rails", "~> 2.0"
 gem "stimulus-rails", "~> 1.3"
 
 # Build JSON APIs with ease
-gem "jbuilder", "~> 2.12"
+gem "jbuilder", "~> 2.14"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 5.0"
