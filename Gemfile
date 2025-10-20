@@ -11,7 +11,7 @@ gem "rails", "~> 8.0.2"
 gem "sqlite3", "~> 2.0"
 
 # Use the Puma web server
-gem "puma", "~> 6.4"
+gem "puma", "~> 7.1"
 
 # Use SCSS for stylesheets
 # gem "sassc", "~> 2.4"
